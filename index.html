@@ -1,3 +1,8 @@
+# Responsive Portfolio Website for Aryan Saeed
+
+Here's a fully responsive, clean, and beautiful UI design for your portfolio website with several improvements:
+
+```html
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,7 +15,9 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;600;700&display=swap"
+        rel="stylesheet">
     <!-- Animate.css -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <style>
@@ -21,127 +28,113 @@
             --dark: #2d3748;
             --darker: #1a202c;
             --light: #f8f9fa;
-            --lighter: #ffffff;
+            --gray: #edf2f7;
             --gradient: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            --card-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            --gradient-reverse: linear-gradient(135deg, var(--secondary) 0%, var(--primary) 100%);
         }
 
         body {
             font-family: 'Poppins', sans-serif;
             scroll-behavior: smooth;
-            background-color: var(--lighter);
+            background-color: #fafafa;
             color: var(--dark);
             overflow-x: hidden;
+            line-height: 1.6;
         }
 
-        h1, h2, h3, h4, h5 {
+        h1,
+        h2,
+        h3,
+        h4,
+        h5 {
             font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
         }
 
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 10px;
-        }
-        ::-webkit-scrollbar-track {
-            background: var(--light);
-        }
-        ::-webkit-scrollbar-thumb {
-            background: var(--primary);
-            border-radius: 10px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: var(--primary-light);
-        }
-
-        /* Particles Background */
-        #particles-js {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            z-index: 0;
-        }
-
-        /* Hero Section */
         .hero-section {
-            position: relative;
             background: var(--gradient);
             color: white;
             padding: 180px 0 120px;
+            position: relative;
             overflow: hidden;
         }
 
-        .hero-content {
-            position: relative;
-            z-index: 2;
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
         }
 
-        /* Navbar */
         .navbar {
             transition: all 0.4s ease;
             padding: 15px 0;
-            z-index: 1000;
+            backdrop-filter: blur(10px);
+            background-color: rgba(45, 55, 72, 0.9);
         }
 
         .navbar.scrolled {
-            background-color: rgba(45, 55, 72, 0.95) !important;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            background-color: rgba(26, 32, 44, 0.98) !important;
             padding: 10px 0;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .nav-logo {
+            height: 40px;
+            width: 40px;
+            margin-right: 12px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .navbar-brand {
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
         }
 
         .nav-link {
-            position: relative;
-            margin: 0 10px;
             font-weight: 500;
-            color: white !important;
+            margin: 0 8px;
+            position: relative;
+            padding: 8px 12px !important;
         }
 
         .nav-link::after {
             content: '';
             position: absolute;
             bottom: 0;
-            left: 0;
+            left: 12px;
             width: 0;
             height: 2px;
-            background-color: white;
+            background: var(--primary-light);
             transition: width 0.3s ease;
         }
 
-        .nav-link:hover::after {
-            width: 100%;
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: calc(100% - 24px);
         }
 
-        .nav-logo {
-            height: 40px;
-            width: 40px;
-            margin-right: 10px;
-            border-radius: 50%;
-            object-fit: cover;
-            transition: transform 0.3s ease;
-        }
-
-        .navbar-brand:hover .nav-logo {
-            transform: rotate(15deg);
-        }
-
-        /* Profile Image */
         .profile-img {
             width: 220px;
             height: 220px;
             object-fit: cover;
-            border: 5px solid rgba(255, 255, 255, 0.3);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            transition: all 0.5s ease;
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            transition: all 0.4s ease;
         }
 
         .profile-img:hover {
             transform: scale(1.05);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+            border-color: rgba(255, 255, 255, 0.5);
         }
 
-        /* Section Titles */
         .section-title {
             position: relative;
             margin-bottom: 60px;
@@ -151,31 +144,43 @@
         .section-title::after {
             content: '';
             position: absolute;
-            bottom: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
+            bottom: -12px;
+            left: 0;
+            width: 100%;
             height: 4px;
             background: var(--gradient);
             border-radius: 2px;
         }
 
-        /* Cards */
+        .section-title.center::after {
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+        }
+
+        .section-padding {
+            padding: 100px 0;
+        }
+
+        .bg-gray {
+            background-color: var(--gray);
+        }
+
         .skill-card,
         .project-card {
             transition: all 0.4s ease;
             border: none;
             border-radius: 12px;
             overflow: hidden;
-            box-shadow: var(--card-shadow);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
             height: 100%;
-            background: white;
+            background-color: white;
         }
 
         .skill-card:hover,
         .project-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
         }
 
         .skill-icon {
@@ -185,55 +190,38 @@
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
-            transition: transform 0.3s ease;
-        }
-
-        .skill-card:hover .skill-icon {
-            transform: scale(1.1);
-        }
-
-        /* Project Cards */
-        .project-img-container {
-            overflow: hidden;
-            height: 200px;
         }
 
         .project-img {
-            width: 100%;
-            height: 100%;
+            height: 220px;
             object-fit: cover;
-            transition: transform 0.7s ease;
+            transition: transform 0.6s ease;
+            width: 100%;
         }
 
         .project-card:hover .project-img {
-            transform: scale(1.1);
+            transform: scale(1.08);
         }
 
-        /* Badges */
         .badge-tech {
             margin-right: 8px;
             margin-bottom: 8px;
             font-weight: 500;
-            padding: 8px 12px;
-            border-radius: 50px;
-            font-size: 0.85rem;
-            transition: all 0.3s ease;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            display: inline-block;
         }
 
-        .badge-tech:hover {
-            transform: translateY(-2px);
-        }
-
-        /* Timeline */
         .timeline {
             position: relative;
-            padding-left: 30px;
+            padding-left: 40px;
         }
 
         .timeline::before {
             content: '';
             position: absolute;
-            left: 10px;
+            left: 15px;
             top: 0;
             bottom: 0;
             width: 3px;
@@ -248,17 +236,26 @@
         .timeline-item::before {
             content: '';
             position: absolute;
-            left: -30px;
+            left: -40px;
             top: 5px;
-            width: 18px;
-            height: 18px;
+            width: 20px;
+            height: 20px;
             border-radius: 50%;
-            background: var(--primary);
-            border: 4px solid white;
-            box-shadow: 0 0 0 3px var(--primary);
+            background: white;
+            border: 4px solid var(--primary);
+            box-shadow: 0 0 0 3px rgba(108, 99, 255, 0.2);
         }
 
-        /* Contact Section */
+        .timeline-date {
+            background: var(--gradient);
+            color: white;
+            padding: 3px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+
         .contact-icon {
             font-size: 1.5rem;
             width: 60px;
@@ -268,56 +265,59 @@
             justify-content: center;
             background: var(--gradient);
             color: white;
-            border-radius: 50%;
+            border-radius: 12px;
             margin-right: 20px;
             transition: all 0.3s ease;
+            flex-shrink: 0;
         }
 
-        .contact-item:hover .contact-icon {
-            transform: scale(1.1);
-            box-shadow: 0 10px 20px rgba(108, 99, 255, 0.3);
+        .contact-icon:hover {
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 8px 20px rgba(108, 99, 255, 0.3);
         }
 
-        /* Buttons */
         .btn-gradient {
             background: var(--gradient);
             border: none;
             color: white;
             transition: all 0.4s ease;
-            padding: 12px 30px;
-            border-radius: 50px;
+            border-radius: 8px;
             font-weight: 600;
             letter-spacing: 0.5px;
+            padding: 12px 28px;
             position: relative;
             overflow: hidden;
         }
 
-        .btn-gradient:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 30px rgba(108, 99, 255, 0.4);
-            color: white;
-        }
-
-        .btn-gradient::after {
+        .btn-gradient::before {
             content: '';
             position: absolute;
             top: 0;
-            left: 0;
+            left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(to right, var(--secondary), var(--primary));
-            opacity: 0;
-            transition: opacity 0.3s ease;
+            background: var(--gradient-reverse);
+            transition: all 0.6s ease;
+            z-index: 1;
         }
 
-        .btn-gradient:hover::after {
-            opacity: 1;
+        .btn-gradient:hover::before {
+            left: 0;
         }
 
-        /* Social Icons */
+        .btn-gradient span {
+            position: relative;
+            z-index: 2;
+        }
+
+        .btn-gradient:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(108, 99, 255, 0.4);
+        }
+
         .social-icon {
-            width: 50px;
-            height: 50px;
+            width: 45px;
+            height: 45px;
             display: inline-flex;
             align-items: center;
             justify-content: center;
@@ -326,45 +326,19 @@
             border-radius: 50%;
             margin: 0 12px;
             transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
+            font-size: 1.2rem;
         }
 
         .social-icon:hover {
             background: white;
             color: var(--primary);
             transform: translateY(-5px) scale(1.1);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
         }
 
-        .social-icon::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: white;
-            border-radius: 50%;
-            transform: scale(0);
-            transition: transform 0.3s ease;
-        }
-
-        .social-icon:hover::after {
-            transform: scale(1);
-            opacity: 0;
-        }
-
-        .social-icon i {
-            position: relative;
-            z-index: 1;
-        }
-
-        /* Footer */
         footer {
             background: var(--darker);
             color: white;
-            position: relative;
+            padding: 40px 0 20px;
         }
 
         .footer-icon {
@@ -375,43 +349,207 @@
         }
 
         .footer-icon:hover {
-            color: var(--primary);
-            transform: translateY(-5px) scale(1.1);
+            color: var(--primary-light);
+            transform: translateY(-3px);
         }
 
-        /* Floating Elements */
-        .floating {
-            animation: floating 6s ease-in-out infinite;
+        .floating-shapes {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            overflow: hidden;
+            z-index: 0;
         }
 
-        @keyframes floating {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-            100% { transform: translateY(0px); }
+        .shape {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            animation: float 15s infinite linear;
         }
 
-        /* Responsive Adjustments */
-        @media (max-width: 992px) {
-            .hero-section {
-                padding: 150px 0 80px;
+        .shape:nth-child(1) {
+            width: 150px;
+            height: 150px;
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .shape:nth-child(2) {
+            width: 200px;
+            height: 200px;
+            top: 60%;
+            left: 80%;
+            animation-delay: 3s;
+            animation-duration: 20s;
+        }
+
+        .shape:nth-child(3) {
+            width: 100px;
+            height: 100px;
+            top: 80%;
+            left: 20%;
+            animation-delay: 5s;
+            animation-duration: 25s;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
             }
-            
+
+            50% {
+                transform: translateY(-50px) rotate(180deg);
+            }
+
+            100% {
+                transform: translateY(0) rotate(360deg);
+            }
+        }
+
+        .typewriter {
+            overflow: hidden;
+            border-right: 3px solid white;
+            white-space: nowrap;
+            margin: 0 auto;
+            letter-spacing: 1px;
+            animation: typing 3.5s steps(30, end), blink-caret 0.75s step-end infinite;
+        }
+
+        @keyframes typing {
+            from {
+                width: 0
+            }
+
+            to {
+                width: 100%
+            }
+        }
+
+        @keyframes blink-caret {
+
+            from,
+            to {
+                border-color: transparent
+            }
+
+            50% {
+                border-color: white
+            }
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+
+            0%,
+            20%,
+            50%,
+            80%,
+            100% {
+                transform: translateY(0) translateX(-50%);
+            }
+
+            40% {
+                transform: translateY(-20px) translateX(-50%);
+            }
+
+            60% {
+                transform: translateY(-10px) translateX(-50%);
+            }
+        }
+
+        .scroll-line {
+            width: 2px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.5);
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .scroll-line::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 10px;
+            background: white;
+            animation: scroll 2s infinite;
+        }
+
+        @keyframes scroll {
+            0% {
+                top: 0;
+                opacity: 1;
+            }
+
+            100% {
+                top: 100%;
+                opacity: 0;
+            }
+        }
+
+        .progress-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: transparent;
+            z-index: 1000;
+        }
+
+        .progress-bar {
+            height: 4px;
+            background: var(--gradient);
+            width: 0%;
+            transition: width 0.1s ease;
+        }
+
+        .card-hover-effect {
+            transition: all 0.4s ease;
+        }
+
+        .card-hover-effect:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Improved responsive styles */
+        @media (max-width: 1199.98px) {
+            .hero-section {
+                padding: 150px 0 100px;
+            }
+
+            .section-padding {
+                padding: 80px 0;
+            }
+        }
+
+        @media (max-width: 991.98px) {
+            .hero-section {
+                padding: 140px 0 90px;
+            }
+
             .profile-img {
-                width: 180px;
-                height: 180px;
+                width: 200px;
+                height: 200px;
             }
-        }
 
-        @media (max-width: 768px) {
-            .hero-section {
-                padding: 130px 0 60px;
+            .section-title {
+                margin-bottom: 50px;
             }
-            
-            .section-title::after {
-                bottom: -12px;
-                width: 60px;
-            }
-            
+
             .contact-icon {
                 width: 50px;
                 height: 50px;
@@ -419,45 +557,139 @@
             }
         }
 
-        @media (max-width: 576px) {
+        @media (max-width: 767.98px) {
+            .hero-section {
+                padding: 130px 0 80px;
+            }
+
+            .profile-img {
+                width: 180px;
+                height: 180px;
+            }
+
+            .section-padding {
+                padding: 70px 0;
+            }
+
+            .section-title::after {
+                bottom: -8px;
+            }
+
+            .timeline {
+                padding-left: 30px;
+            }
+
+            .timeline-item::before {
+                left: -30px;
+            }
+
+            .nav-link {
+                margin: 0;
+                padding: 10px 15px !important;
+            }
+        }
+
+        @media (max-width: 575.98px) {
+            .hero-section {
+                padding: 120px 0 60px;
+            }
+
             .profile-img {
                 width: 150px;
                 height: 150px;
             }
-            
-            .hero-section h1 {
-                font-size: 2.5rem;
+
+            .section-title {
+                margin-bottom: 40px;
             }
-            
-            .hero-section p {
-                font-size: 1.1rem;
+
+            .section-title::after {
+                height: 3px;
+                bottom: -6px;
+            }
+
+            .project-img {
+                height: 180px;
+            }
+
+            .contact-icon {
+                width: 45px;
+                height: 45px;
+                font-size: 1.2rem;
+                margin-right: 12px;
+            }
+
+            .footer-icon {
+                font-size: 1.2rem;
+                margin: 0 10px;
             }
         }
 
-        /* Animation Classes */
-        .animate-delay-1 {
-            animation-delay: 0.2s;
+        /* Accessibility improvements */
+        a:focus,
+        button:focus {
+            outline: 2px solid var(--primary);
+            outline-offset: 3px;
         }
-        
-        .animate-delay-2 {
-            animation-delay: 0.4s;
+
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border-width: 0;
         }
-        
-        .animate-delay-3 {
-            animation-delay: 0.6s;
+
+        /* Performance optimizations */
+        .will-change {
+            will-change: transform, opacity;
+        }
+
+        /* Dark mode preference */
+        @media (prefers-color-scheme: dark) {
+            body {
+                background-color: #121212;
+                color: #f8f9fa;
+            }
+
+            .bg-gray {
+                background-color: #1e1e1e;
+            }
+
+            .skill-card,
+            .project-card,
+            .card {
+                background-color: #2d2d2d;
+                color: #f8f9fa;
+            }
+
+            .project-card .card-text,
+            .contact-card .text-dark {
+                color: #f8f9fa !important;
+            }
         }
     </style>
 </head>
 
 <body data-bs-spy="scroll" data-bs-target="#navbar">
+    <!-- Scroll Progress Bar -->
+    <div class="progress-container">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+
     <!-- Navigation -->
     <nav id="navbar" class="navbar navbar-expand-lg navbar-dark fixed-top">
         <div class="container">
-            <a class="navbar-brand fw-bold d-flex align-items-center" href="#home">
-                <img src="./img/WhatsApp Image 2025-04-29 at 06.41.51_daf4792a.jpg" alt="Logo" class="nav-logo">
-                <span class="d-none d-sm-inline">Aryan Saeed</span>
+            <a class="navbar-brand" href="#home">
+                <img src="https://i.ibb.co/tSB3HMW/Untitled-design-3.png" alt="Aryan Saeed Logo" class="nav-logo">
+                <span>Aryan Saeed</span>
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
@@ -487,86 +719,75 @@
 
     <!-- Hero Section -->
     <section id="home" class="hero-section text-center d-flex align-items-center">
-        <div id="particles-js"></div>
-        <div class="container hero-content">
-            <div class="row justify-content-center">
-                <div class="col-lg-8">
-                    <img src="https://i.ibb.co/tSB3HMW/Untitled-design-3.png" class="profile-img rounded-circle mb-4 floating" alt="Aryan Saeed">
-                    <h1 class="display-4 fw-bold mb-3 animate__animated animate__fadeInDown">Aryan Saeed</h1>
-                    <p class="lead fs-3 mb-4 animate__animated animate__fadeInDown animate-delay-1">Full Stack Developer & Digital Creator</p>
-                    <div class="d-flex justify-content-center animate__animated animate__fadeInUp animate-delay-2">
-                        <a href="https://github.com/aryansaeed09" class="social-icon mx-2">
-                            <i class="fab fa-github"></i>
-                        </a>
-                        <a href="https://youtube.com/@aryansaeed09?si=K2j55v_JipdM9Gfp" class="social-icon mx-2">
-                            <i class="fab fa-youtube"></i>
-                        </a>
-                        <a href="https://www.facebook.com/people/Muhammad-Aryan/pfbid02dR28GHBK5mTRtoBtKScFVbojV1353J6ekt2qJm3FvjRwRaVHUUfZ8mAY3fcQcVmal/?rdid=rAaR4uPu1qqGJSI8&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F16S6K3qn9N%2F" class="social-icon mx-2">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                        <a href="https://www.instagram.com/aryansaeed906?igsh=YzljYTk1ODg3Zg==" class="social-icon mx-2">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                        <a href="https://www.tiktok.com/@aryansaeed09?_t=ZS-8vuTVNJarW4&_r=1" class="social-icon mx-2">
-                            <i class="fab fa-tiktok"></i>
-                        </a>
-                    </div>
-                    <a href="#contact" class="btn btn-gradient btn-lg mt-4 px-4 py-3 animate__animated animate__fadeInUp animate-delay-3">
-                        <i class="fas fa-paper-plane me-2"></i>Get In Touch
-                    </a>
-                </div>
+        <div class="floating-shapes">
+            <div class="shape"></div>
+            <div class="shape"></div>
+            <div class="shape"></div>
+        </div>
+        <div class="container position-relative">
+            <img src="https://i.ibb.co/tSB3HMW/Untitled-design-3.png"
+                class="profile-img rounded-circle mb-4 animate__animated animate__fadeIn"
+                alt="Aryan Saeed Profile Picture" loading="lazy">
+
+            <h1 class="display-4 fw-bold mb-3 animate__animated animate__fadeInDown">Aryan Saeed</h1>
+            <div class="typewriter mb-4 animate__animated animate__fadeIn">
+                <p class="lead fs-3">Full Stack Developer</p>
+            </div>
+            <div class="d-flex justify-content-center animate__animated animate__fadeInUp">
+                <a href="https://github.com/aryansaeed09" class="social-icon mx-2" aria-label="GitHub">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://youtube.com/@aryansaeed09?si=K2j55v_JipdM9Gfp" class="social-icon mx-2"
+                    aria-label="YouTube">
+                    <i class="fab fa-youtube"></i>
+                </a>
+                <a href="https://www.facebook.com/people/Muhammad-Aryan/pfbid02dR28GHBK5mTRtoBtKScFVbojV1353J6ekt2qJm3FvjRwRaVHUUfZ8mAY3fcQcVmal/?rdid=rAaR4uPu1qqGJSI8&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F16S6K3qn9N%2F"
+                    class="social-icon mx-2" aria-label="Facebook">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+            </div>
+            <a href="#contact" class="btn btn-gradient btn-lg mt-4 px-4 py-3 animate__animated animate__fadeInUp">
+                <span>Get In Touch</span>
+            </a>
+
+            <div class="scroll-indicator animate__animated animate__fadeInUp animate__delay-1s">
+                <div class="scroll-line"></div>
             </div>
         </div>
     </section>
 
     <!-- About Section -->
-    <section id="about" class="py-5 bg-light">
-        <div class="container py-5">
-            <h2 class="text-center section-title fw-bold animate__animated animate__fadeIn">About Me</h2>
-            <div class="row justify-content-center animate__animated animate__fadeIn animate-delay-1">
+    <section id="about" class="section-padding">
+        <div class="container">
+            <h2 class="text-center section-title fw-bold center animate__animated animate__fadeIn">About Me</h2>
+            <div class="row justify-content-center animate__animated animate__fadeInUp">
                 <div class="col-lg-8 text-center">
                     <p class="lead fs-5 mb-4">
-                        I'm a passionate Full Stack Developer with expertise in both front-end and back-end technologies. I specialize in creating efficient, scalable, and user-friendly web applications that solve real-world problems and deliver exceptional user experiences.
+                        I'm a passionate Full Stack Developer with expertise in both front-end and back-end
+                        technologies. I love creating efficient, scalable, and user-friendly web applications that solve
+                        real-world problems.
                     </p>
-                    <div class="row g-4 mt-4">
-                        <div class="col-md-4">
-                            <div class="p-3 bg-white rounded shadow-sm">
-                                <i class="fas fa-code text-primary mb-3" style="font-size: 2rem;"></i>
-                                <h5 class="fw-bold">Clean Code</h5>
-                                <p class="mb-0">Well-structured and maintainable code following best practices</p>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="p-3 bg-white rounded shadow-sm">
-                                <i class="fas fa-mobile-alt text-primary mb-3" style="font-size: 2rem;"></i>
-                                <h5 class="fw-bold">Responsive Design</h5>
-                                <p class="mb-0">Perfectly working on all device sizes</p>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="p-3 bg-white rounded shadow-sm">
-                                <i class="fas fa-rocket text-primary mb-3" style="font-size: 2rem;"></i>
-                                <h5 class="fw-bold">High Performance</h5>
-                                <p class="mb-0">Fast loading and optimized applications</p>
-                            </div>
-                        </div>
-                    </div>
+                    <p class="mb-0">
+                        With a strong foundation in computer science and hands-on experience in various technologies, I
+                        bring a comprehensive approach to web development projects. My goal is to build applications
+                        that not only meet user needs but also provide delightful experiences.
+                    </p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Skills Section -->
-    <section id="skills" class="py-5">
-        <div class="container py-5">
-            <h2 class="text-center section-title fw-bold animate__animated animate__fadeIn">My Skills</h2>
-            <div class="row g-4 animate__animated animate__fadeIn animate-delay-1">
+    <section id="skills" class="section-padding bg-gray">
+        <div class="container">
+            <h2 class="text-center section-title fw-bold center animate__animated animate__fadeIn">Skills</h2>
+            <div class="row g-4">
                 <!-- Frontend Skills -->
-                <div class="col-md-4">
-                    <div class="card skill-card h-100 border-0">
-                        <div class="card-body text-center p-4">
+                <div class="col-md-4 animate__animated animate__fadeInLeft">
+                    <div class="card skill-card h-100 border-0 card-hover-effect">
+                        <div class="card-body text-center p-5">
                             <i class="fas fa-laptop-code skill-icon mb-3"></i>
-                            <h5 class="card-title fw-bold mb-3">Frontend Development</h5>
+                            <h5 class="card-title fw-bold mb-3">Frontend</h5>
                             <p class="card-text">
                                 <span class="badge bg-primary bg-opacity-10 text-primary badge-tech">HTML5</span>
                                 <span class="badge bg-primary bg-opacity-10 text-primary badge-tech">CSS3</span>
@@ -582,11 +803,11 @@
                 </div>
 
                 <!-- Backend Skills -->
-                <div class="col-md-4">
-                    <div class="card skill-card h-100 border-0">
-                        <div class="card-body text-center p-4">
+                <div class="col-md-4 animate__animated animate__fadeInUp">
+                    <div class="card skill-card h-100 border-0 card-hover-effect">
+                        <div class="card-body text-center p-5">
                             <i class="fas fa-server skill-icon mb-3"></i>
-                            <h5 class="card-title fw-bold mb-3">Backend Development</h5>
+                            <h5 class="card-title fw-bold mb-3">Backend</h5>
                             <p class="card-text">
                                 <span class="badge bg-success bg-opacity-10 text-success badge-tech">Node.js</span>
                                 <span class="badge bg-success bg-opacity-10 text-success badge-tech">Express</span>
@@ -595,18 +816,17 @@
                                 <span class="badge bg-success bg-opacity-10 text-success badge-tech">PHP</span>
                                 <span class="badge bg-success bg-opacity-10 text-success badge-tech">Laravel</span>
                                 <span class="badge bg-success bg-opacity-10 text-success badge-tech">RESTful APIs</span>
-                                <span class="badge bg-success bg-opacity-10 text-success badge-tech">GraphQL</span>
                             </p>
                         </div>
                     </div>
                 </div>
 
                 <!-- Database & Other Skills -->
-                <div class="col-md-4">
-                    <div class="card skill-card h-100 border-0">
-                        <div class="card-body text-center p-4">
+                <div class="col-md-4 animate__animated animate__fadeInRight">
+                    <div class="card skill-card h-100 border-0 card-hover-effect">
+                        <div class="card-body text-center p-5">
                             <i class="fas fa-database skill-icon mb-3"></i>
-                            <h5 class="card-title fw-bold mb-3">Database & DevOps</h5>
+                            <h5 class="card-title fw-bold mb-3">Database & More</h5>
                             <p class="card-text">
                                 <span class="badge bg-info bg-opacity-10 text-info badge-tech">MySQL</span>
                                 <span class="badge bg-info bg-opacity-10 text-info badge-tech">MongoDB</span>
@@ -625,123 +845,113 @@
     </section>
 
     <!-- Projects Section -->
-    <section id="projects" class="py-5 bg-light">
-        <div class="container py-5">
-            <h2 class="text-center section-title fw-bold animate__animated animate__fadeIn">Featured Projects</h2>
-            <div class="row g-4 animate__animated animate__fadeIn animate-delay-1">
+    <section id="projects" class="section-padding">
+        <div class="container">
+            <h2 class="text-center section-title fw-bold center animate__animated animate__fadeIn">My Projects</h2>
+            <div class="row g-4">
                 <!-- Project 1 -->
-                <div class="col-lg-4 col-md-6">
-                    <div class="card project-card h-100 border-0">
-                        <div class="project-img-container">
-                            <img src="./img/WhatsApp Image 2025-04-17 at 8.26.24 AM.jpeg" class="project-img" alt="E-commerce Platform">
-                        </div>
+                <div class="col-lg-4 col-md-6 animate__animated animate__fadeInLeft">
+                    <div class="card project-card h-100 border-0 card-hover-effect">
+                        <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+                            class="card-img-top project-img" alt="E-commerce Platform" loading="lazy">
                         <div class="card-body">
                             <h5 class="card-title fw-bold">E-commerce Platform</h5>
-                            <p class="card-text">A full-featured online store with product listings, cart functionality, secure payment processing, and admin dashboard.</p>
+                            <p class="card-text">A full-featured online store with product listings, cart functionality,
+                                and secure payment processing.</p>
                             <div class="mb-3">
                                 <span class="badge bg-primary bg-opacity-10 text-primary badge-tech">React</span>
                                 <span class="badge bg-success bg-opacity-10 text-success badge-tech">Node.js</span>
                                 <span class="badge bg-info bg-opacity-10 text-info badge-tech">MongoDB</span>
                                 <span class="badge bg-warning bg-opacity-10 text-warning badge-tech">Stripe API</span>
                             </div>
-                            <div class="d-flex justify-content-between">
-                                <a href="#" class="btn btn-outline-primary btn-sm">View Demo</a>
-                                <a href="#" class="btn btn-gradient btn-sm">View Code</a>
-                            </div>
+                            <a href="#" class="btn btn-outline-primary">View Project</a>
                         </div>
                     </div>
                 </div>
 
                 <!-- Project 2 -->
-                <div class="col-lg-4 col-md-6">
-                    <div class="card project-card h-100 border-0">
-                        <div class="project-img-container">
-                            <img src="./img/WhatsApp Image 2025-04-17 at 8.26.24 AM.jpeg" class="project-img" alt="Task Management App">
-                        </div>
+                <div class="col-lg-4 col-md-6 animate__animated animate__fadeInUp">
+                    <div class="card project-card h-100 border-0 card-hover-effect">
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+                            class="card-img-top project-img" alt="Task Management App" loading="lazy">
                         <div class="card-body">
                             <h5 class="card-title fw-bold">Task Management App</h5>
-                            <p class="card-text">A productivity application for organizing tasks with drag-and-drop functionality, team collaboration, and real-time updates.</p>
+                            <p class="card-text">A productivity application for organizing tasks with drag-and-drop
+                                functionality and team collaboration features.</p>
                             <div class="mb-3">
                                 <span class="badge bg-primary bg-opacity-10 text-primary badge-tech">Vue.js</span>
                                 <span class="badge bg-success bg-opacity-10 text-success badge-tech">Firebase</span>
                                 <span class="badge bg-danger bg-opacity-10 text-danger badge-tech">Firestore</span>
                                 <span class="badge bg-secondary bg-opacity-10 text-secondary badge-tech">Vuex</span>
                             </div>
-                            <div class="d-flex justify-content-between">
-                                <a href="#" class="btn btn-outline-primary btn-sm">View Demo</a>
-                                <a href="#" class="btn btn-gradient btn-sm">View Code</a>
-                            </div>
+                            <a href="#" class="btn btn-outline-primary">View Project</a>
                         </div>
                     </div>
                 </div>
 
                 <!-- Project 3 -->
-                <div class="col-lg-4 col-md-6">
-                    <div class="card project-card h-100 border-0">
-                        <div class="project-img-container">
-                            <img src="./img/WhatsApp Image 2025-04-17 at 8.26.24 AM.jpeg" class="project-img" alt="Social Media Dashboard">
-                        </div>
+                <div class="col-lg-4 col-md-6 animate__animated animate__fadeInRight">
+                    <div class="card project-card h-100 border-0 card-hover-effect">
+                        <img src="https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+                            class="card-img-top project-img" alt="Social Media Dashboard" loading="lazy">
                         <div class="card-body">
                             <h5 class="card-title fw-bold">Social Media Dashboard</h5>
-                            <p class="card-text">Analytics dashboard for social media managers with real-time data visualization, reporting tools, and cross-platform integration.</p>
+                            <p class="card-text">Analytics dashboard for social media managers with real-time data
+                                visualization and reporting tools.</p>
                             <div class="mb-3">
                                 <span class="badge bg-primary bg-opacity-10 text-primary badge-tech">Angular</span>
                                 <span class="badge bg-success bg-opacity-10 text-success badge-tech">Python</span>
                                 <span class="badge bg-info bg-opacity-10 text-info badge-tech">Django</span>
                                 <span class="badge bg-dark bg-opacity-10 text-dark badge-tech">Chart.js</span>
                             </div>
-                            <div class="d-flex justify-content-between">
-                                <a href="#" class="btn btn-outline-primary btn-sm">View Demo</a>
-                                <a href="#" class="btn btn-gradient btn-sm">View Code</a>
-                            </div>
+                            <a href="#" class="btn btn-outline-primary">View Project</a>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="text-center mt-5 animate__animated animate__fadeIn animate-delay-2">
+            <div class="text-center mt-5 animate__animated animate__fadeIn">
                 <a href="https://github.com/aryansaeed09" class="btn btn-gradient px-4 py-3" target="_blank">
-                    <i class="fab fa-github me-2"></i>Explore More Projects on GitHub
+                    <i class="fab fa-github me-2"></i><span>View More Projects on GitHub</span>
                 </a>
             </div>
         </div>
     </section>
 
     <!-- Education Section -->
-    <section id="education" class="py-5">
-        <div class="container py-5">
-            <h2 class="text-center section-title fw-bold animate__animated animate__fadeIn">Education & Experience</h2>
-            <div class="row justify-content-center animate__animated animate__fadeIn animate-delay-1">
+    <section id="education" class="section-padding bg-gray">
+        <div class="container">
+            <h2 class="text-center section-title fw-bold center animate__animated animate__fadeIn">Education</h2>
+            <div class="row justify-content-center animate__animated animate__fadeInUp">
                 <div class="col-lg-8">
                     <div class="timeline">
                         <!-- Intermediate College -->
                         <div class="timeline-item pb-4">
-                            <div class="bg-white p-4 rounded shadow-sm">
-                                <h4 class="fw-bold">Intermediate (College)</h4>
-                                <h5 class="text-primary">AIMS School And College Lodhran</h5>
-                                <p class="text-muted mb-2"><i class="far fa-calendar-alt me-2"></i>2022 - 2024</p>
-                                <p>Completed intermediate education with focus on science subjects including Physics, Chemistry, and Mathematics, laying a strong foundation for technical education.</p>
-                            </div>
+                            <span class="timeline-date">2022 - 2024</span>
+                            <h4 class="fw-bold">Intermediate (College)</h4>
+                            <h5 class="text-primary">AIMS School And College Lodhran</h5>
+                            <p>Completed intermediate education with focus on science subjects, laying the foundation
+                                for my technical education.</p>
                         </div>
 
                         <!-- Microsoft Office Course -->
                         <div class="timeline-item pb-4">
-                            <div class="bg-white p-4 rounded shadow-sm">
-                                <h4 class="fw-bold">Microsoft Office Certification</h4>
-                                <h5 class="text-primary">Tareen Institute of Computer Education & Resources (TICER)</h5>
-                                <p class="text-muted mb-2"><i class="far fa-calendar-alt me-2"></i>2024</p>
-                                <p>South Punjab's premier institute for IT education. Completed comprehensive training in essential office productivity tools including advanced Excel functions, professional document formatting in Word, and effective presentation design in PowerPoint.</p>
-                            </div>
+                            <span class="timeline-date">2024</span>
+                            <h4 class="fw-bold">Microsoft Office Course</h4>
+                            <h5 class="text-primary">Tareen Institute of Computer Education & Resources (TICER)</h5>
+                            <p>South Punjab's Hub for Advanced IT Education. Learned essential office productivity tools
+                                including Word, Excel, and PowerPoint, enhancing my computer literacy and professional
+                                skills.</p>
                         </div>
 
                         <!-- Full Stack Development Course -->
                         <div class="timeline-item pb-4">
-                            <div class="bg-white p-4 rounded shadow-sm">
-                                <h4 class="fw-bold">Full Stack Development Certification</h4>
-                                <h5 class="text-primary">Tareen Institute of Computer Education & Resources (TICER)</h5>
-                                <p class="text-muted mb-2"><i class="far fa-calendar-alt me-2"></i>2025</p>
-                                <p>Intensive training program covering modern web development technologies including HTML5, CSS3, JavaScript, React, Node.js, Express, MongoDB, and deployment strategies. Developed multiple real-world projects and gained hands-on experience with industry best practices.</p>
-                            </div>
+                            <span class="timeline-date">2025</span>
+                            <h4 class="fw-bold">Full Stack Development Course</h4>
+                            <h5 class="text-primary">Tareen Institute of Computer Education & Resources (TICER)</h5>
+                            <p>South Punjab's Hub for Advanced IT Education. Comprehensive training in modern web
+                                development technologies including HTML, CSS, JavaScript, React, Node.js, and databases,
+                                equipping me with the skills to build complete web applications.</p>
                         </div>
                     </div>
                 </div>
@@ -750,78 +960,225 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="py-5 bg-light">
-        <div class="container py-5">
-            <h2 class="text-center section-title fw-bold animate__animated animate__fadeIn">Get In Touch</h2>
-            <div class="row justify-content-center animate__animated animate__fadeIn animate-delay-1">
+    <section id="contact" class="section-padding">
+        <div class="container">
+            <h2 class="text-center section-title fw-bold center animate__animated animate__fadeIn">Contact Me</h2>
+            <div class="row justify-content-center animate__animated animate__fadeInUp">
                 <div class="col-lg-8">
-                    <div class="card border-0 shadow-sm overflow-hidden">
-                        <div class="row g-0">
-                            <div class="col-md-6 d-flex align-items-center" style="background: var(--gradient);">
-                                <div class="p-5 text-white text-center">
-                                    <h3 class="fw-bold mb-4">Let's Work Together!</h3>
-                                    <p class="mb-4">Have a project in mind or want to discuss potential opportunities? Feel free to reach out!</p>
-                                    <div class="d-flex justify-content-center">
-                                        <a href="https://wa.me/923293751706" class="social-icon mx-2 bg-white text-primary">
-                                            <i class="fab fa-whatsapp"></i>
-                                        </a>
-                                        <a href="mailto:aryansaeed906@gmail.com" class="social-icon mx-2 bg-white text-primary">
-                                            <i class="fas fa-envelope"></i>
-                                        </a>
-                                        <a href="tel:+923293751706" class="social-icon mx-2 bg-white text-primary">
-                                            <i class="fas fa-phone"></i>
-                                        </a>
-                                    </div>
+                    <div class="row g-4">
+                        <!-- Email -->
+                        <div class="col-md-6">
+                            <div class="d-flex align-items-center contact-card">
+                                <div class="contact-icon">
+                                    <i class="fas fa-envelope"></i>
                                 </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="card-body p-5">
-                                    <ul class="list-unstyled mb-0">
-                                        <li class="mb-4 d-flex align-items-center contact-item">
-                                            <i class="fas fa-envelope contact-icon"></i>
-                                            <a href="mailto:aryansaeed906@gmail.com" class="text-decoration-none text-dark fs-5">
-                                                aryansaeed906@gmail.com
-                                            </a>
-                                        </li>
-                                        <li class="mb-4 d-flex align-items-center contact-item">
-                                            <i class="fab fa-whatsapp contact-icon"></i>
-                                            <a href="https://wa.me/923293751706" target="_blank" class="text-decoration-none text-dark fs-5">
-                                                +92 329 3751706
-                                            </a>
-                                        </li>
-                                        <li class="mb-4 d-flex align-items-center contact-item">
-                                            <i class="fab fa-github contact-icon"></i>
-                                            <a href="https://github.com/aryansaeed09" target="_blank" class="text-decoration-none text-dark fs-5">
-                                                github.com/aryansaeed09
-                                            </a>
-                                        </li>
-                                        <li class="mb-4 d-flex align-items-center contact-item">
-                                            <i class="fab fa-youtube contact-icon"></i>
-                                            <a href="https://youtube.com/@aryansaeed09?si=K2j55v_JipdM9Gfp" target="_blank" class="text-decoration-none text-dark fs-5">
-                                                youtube.com/@aryansaeed09
-                                            </a>
-                                        </li>
-                                        <li class="mb-4 d-flex align-items-center contact-item">
-                                            <i class="fab fa-facebook-f contact-icon"></i>
-                                            <a href="https://www.facebook.com/people/Muhammad-Aryan/pfbid02dR28GHBK5mTRtoBtKScFVbojV1353J6ekt2qJm3FvjRwRaVHUUfZ8mAY3fcQcVmal/?rdid=rAaR4uPu1qqGJSI8&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F16S6K3qn9N%2F" target="_blank" class="text-decoration-none text-dark fs-5">
-                                                facebook.com/MuhammadAryan
-                                            </a>
-                                        </li>
-                                    </ul>
+                                <div>
+                                    <h5 class="fw-bold mb-1">Email</h5>
+                                    <a href="mailto:aryansaeed@example.com"
+                                        class="text-dark text-decoration-none">aryansaeed@example.com</a>
                                 </div>
                             </div>
                         </div>
+
+                        <!-- Phone -->
+                        <div class="col-md-6">
+                            <div class="d-flex align-items-center contact-card">
+                                <div class="contact-icon">
+                                    <i class="fas fa-phone"></i>
+                                </div>
+                                <div>
+                                    <h5 class="fw-bold mb-1">Phone</h5>
+                                    <a href="tel:+921234567890" class="text-dark text-decoration-none">+92 123
+                                        4567890</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Location -->
+                        <div class="col-md-6">
+                            <div class="d-flex align-items-center contact-card">
+                                <div class="contact-icon">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div>
+                                    <h5 class="fw-bold mb-1">Location</h5>
+                                    <p class="mb-0 text-dark"><a href="https://maps.app.goo.gl/x8e8aULAnFh7kz9A6" class="text-decoration-none text-dark">Lodhran,
+                                        Punjab, Pakistan</a></p>
+                                    
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Freelance -->
+                        <div class="col-md-6">
+                            <div class="d-flex align-items-center contact-card">
+                                <div class="contact-icon">
+                                    <i class="fas fa-briefcase"></i>
+                                </div>
+                                <div>
+                                    <h5 class="fw-bold mb-1">Freelance</h5>
+                                    <p class="mb-0 text-dark">Available for projects</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Social Media -->
+                        <div class="col-12">
+                            <div class="text-center mt-4">
+                                <h5 class="fw-bold mb-3">Follow Me</h5>
+                                <a href="https://facebook.com/yourusername" target="_blank"
+                                    class="mx-2 text-dark fs-4"><i class="fab fa-facebook-f"></i></a>
+                                <a href="https://twitter.com/yourusername" target="_blank"
+                                    class="mx-2 text-dark fs-4"><i class="fab fa-twitter"></i></a>
+                                <a href="https://instagram.com/yourusername" target="_blank"
+                                    class="mx-2 text-dark fs-4"><i class="fab fa-instagram"></i></a>
+                                <a href="https://linkedin.com/in/yourusername" target="_blank"
+                                    class="mx-2 text-dark fs-4"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="https://github.com/yourusername" target="_blank" class="mx-2 text-dark fs-4"><i
+                                        class="fab fa-github"></i></a>
+                                <a href="https://youtube.com/@yourusername" target="_blank"
+                                    class="mx-2 text-dark fs-4"><i class="fab fa-youtube"></i></a>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer Section -->
-    <footer class="py-5">
-        <div class="container text-center">
+
+    <!-- Footer -->
+    <footer class="text-center">
+        <div class="container">
             <div class="mb-4">
-                <a href="https://github.com/aryansaeed09" target="_blank" class="footer-icon mx-2">
+                <a href="https://github.com/aryansaeed09" class="footer-icon mx-2" aria-label="GitHub">
                     <i class="fab fa-github"></i>
                 </a>
-                <a href="https://youtube.com/@aryansaeed09?si=K2j55v_JipdM9Gfp" target="_blank
+                <a href="https://youtube.com/@aryansaeed09?si=K2j55v_JipdM9Gfp" class="footer-icon mx-2"
+                    aria-label="YouTube">
+                    <i class="fab fa-youtube"></i>
+                </a>
+                <a href="https://www.facebook.com/people/Muhammad-Aryan/pfbid02dR28GHBK5mTRtoBtKScFVbojV1353J6ekt2qJm3FvjRwRaVHUUfZ8mAY3fcQcVmal/?rdid=rAaR4uPu1qqGJSI8&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F16S6K3qn9N%2F"
+                    class="footer-icon mx-2" aria-label="Facebook">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+            </div>
+            <p class="mb-2">© 2024 Aryan Saeed. All rights reserved.</p>
+            <p class="mb-0">Designed & Developed with <i class="fas fa-heart text-danger"></i> by Aryan Saeed</p>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <a href="#home" class="btn btn-primary btn-lg back-to-top rounded-circle position-fixed" id="backToTop"
+        aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <!-- Bootstrap 5 JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Custom JS -->
+    <script>
+        // Scroll progress bar
+        window.onscroll = function () {
+            updateProgressBar();
+            updateNavbar();
+            toggleBackToTop();
+        };
+
+        function updateProgressBar() {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.getElementById("progressBar").style.width = scrolled + "%";
+        }
+
+        // Navbar scroll effect
+        function updateNavbar() {
+            const navbar = document.getElementById("navbar");
+            if (window.scrollY > 100) {
+                navbar.classList.add("scrolled");
+            } else {
+                navbar.classList.remove("scrolled");
+            }
+        }
+
+        // Back to top button
+        function toggleBackToTop() {
+            const backToTop = document.getElementById("backToTop");
+            if (window.scrollY > 300) {
+                backToTop.style.display = "flex";
+            } else {
+                backToTop.style.display = "none";
+            }
+        }
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 70,
+                        behavior: 'smooth'
+                    });
+
+                    // Update URL without page jump
+                    if (history.pushState) {
+                        history.pushState(null, null, targetId);
+                    } else {
+                        window.location.hash = targetId;
+                    }
+                }
+            });
+        });
+
+        // Initialize tooltips
+        const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+        tooltipTriggerList.map(function (tooltipTriggerEl) {
+            return new bootstrap.Tooltip(tooltipTriggerEl);
+        });
+
+        // Animation on scroll
+        function animateOnScroll() {
+            const elements = document.querySelectorAll('.animate__animated');
+
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.2;
+
+                if (elementPosition < screenPosition) {
+                    const animationClass = element.classList[1];
+                    element.classList.add(animationClass);
+                }
+            });
+        }
+
+        // Run once on page load
+        document.addEventListener('DOMContentLoaded', function () {
+            animateOnScroll();
+            updateNavbar();
+            toggleBackToTop();
+        });
+
+        // Run on scroll
+        window.addEventListener('scroll', animateOnScroll);
+
+        // Form submission
+        const contactForm = document.querySelector('form');
+        if (contactForm) {
+            contactForm.addEventListener('submit', function (e) {
+                e.preventDefault();
+                // Here you would typically send the form data to a server
+                alert('Thank you for your message! I will get back to you soon.');
+                this.reset();
+            });
+        }
+    </script>
+</body>
+
+</html>
