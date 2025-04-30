@@ -10,47 +10,142 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@700&display=swap" rel="stylesheet">
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <style>
         :root {
-            --primary: #667eea;
-            --secondary: #764ba2;
-            --dark: #343a40;
+            --primary: #6c63ff;
+            --primary-light: #8a85ff;
+            --secondary: #ff6584;
+            --dark: #2d3748;
+            --darker: #1a202c;
             --light: #f8f9fa;
+            --lighter: #ffffff;
+            --gradient: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            --card-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
         }
 
         body {
             font-family: 'Poppins', sans-serif;
             scroll-behavior: smooth;
+            background-color: var(--lighter);
+            color: var(--dark);
+            overflow-x: hidden;
         }
 
+        h1, h2, h3, h4, h5 {
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--light);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary-light);
+        }
+
+        /* Particles Background */
+        #particles-js {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 0;
+        }
+
+        /* Hero Section */
         .hero-section {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            position: relative;
+            background: var(--gradient);
             color: white;
-            padding: 150px 0 100px;
+            padding: 180px 0 120px;
+            overflow: hidden;
         }
 
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Navbar */
         .navbar {
-            transition: all 0.3s ease;
+            transition: all 0.4s ease;
+            padding: 15px 0;
+            z-index: 1000;
         }
 
         .navbar.scrolled {
-            background-color: var(--dark) !important;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            background-color: rgba(45, 55, 72, 0.95) !important;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            padding: 10px 0;
         }
 
+        .nav-link {
+            position: relative;
+            margin: 0 10px;
+            font-weight: 500;
+            color: white !important;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: white;
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .nav-logo {
+            height: 40px;
+            width: 40px;
+            margin-right: 10px;
+            border-radius: 50%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .navbar-brand:hover .nav-logo {
+            transform: rotate(15deg);
+        }
+
+        /* Profile Image */
         .profile-img {
-            width: 300px;
-            height: 300px;
-            object-fit: fill;
-            border: 5px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            width: 220px;
+            height: 220px;
+            object-fit: cover;
+            border: 5px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transition: all 0.5s ease;
         }
 
+        .profile-img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Section Titles */
         .section-title {
             position: relative;
-            margin-bottom: 50px;
+            margin-bottom: 60px;
+            display: inline-block;
         }
 
         .section-title::after {
@@ -61,51 +156,75 @@
             transform: translateX(-50%);
             width: 80px;
             height: 4px;
-            background: linear-gradient(to right, var(--primary), var(--secondary));
+            background: var(--gradient);
             border-radius: 2px;
         }
 
+        /* Cards */
         .skill-card,
         .project-card {
-            transition: all 0.3s ease;
+            transition: all 0.4s ease;
             border: none;
-            border-radius: 10px;
+            border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            box-shadow: var(--card-shadow);
             height: 100%;
+            background: white;
         }
 
         .skill-card:hover,
         .project-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
         }
 
         .skill-icon {
-            font-size: 3rem;
-            margin-bottom: 15px;
-            background: linear-gradient(to right, var(--primary), var(--secondary));
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            background: var(--gradient);
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
+            transition: transform 0.3s ease;
+        }
+
+        .skill-card:hover .skill-icon {
+            transform: scale(1.1);
+        }
+
+        /* Project Cards */
+        .project-img-container {
+            overflow: hidden;
+            height: 200px;
         }
 
         .project-img {
-            height: 200px;
+            width: 100%;
+            height: 100%;
             object-fit: cover;
-            transition: transform 0.5s ease;
+            transition: transform 0.7s ease;
         }
 
         .project-card:hover .project-img {
-            transform: scale(1.05);
+            transform: scale(1.1);
         }
 
+        /* Badges */
         .badge-tech {
-            margin-right: 5px;
-            margin-bottom: 5px;
+            margin-right: 8px;
+            margin-bottom: 8px;
             font-weight: 500;
+            padding: 8px 12px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            transition: all 0.3s ease;
         }
 
+        .badge-tech:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Timeline */
         .timeline {
             position: relative;
             padding-left: 30px;
@@ -117,13 +236,13 @@
             left: 10px;
             top: 0;
             bottom: 0;
-            width: 2px;
-            background: linear-gradient(to bottom, var(--primary), var(--secondary));
+            width: 3px;
+            background: var(--gradient);
         }
 
         .timeline-item {
             position: relative;
-            padding-bottom: 30px;
+            padding-bottom: 40px;
         }
 
         .timeline-item::before {
@@ -131,62 +250,121 @@
             position: absolute;
             left: -30px;
             top: 5px;
-            width: 16px;
-            height: 16px;
+            width: 18px;
+            height: 18px;
             border-radius: 50%;
             background: var(--primary);
-            border: 3px solid white;
+            border: 4px solid white;
             box-shadow: 0 0 0 3px var(--primary);
         }
 
+        /* Contact Section */
         .contact-icon {
             font-size: 1.5rem;
+            width: 60px;
+            height: 60px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--gradient);
+            color: white;
+            border-radius: 50%;
+            margin-right: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover .contact-icon {
+            transform: scale(1.1);
+            box-shadow: 0 10px 20px rgba(108, 99, 255, 0.3);
+        }
+
+        /* Buttons */
+        .btn-gradient {
+            background: var(--gradient);
+            border: none;
+            color: white;
+            transition: all 0.4s ease;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-gradient:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(108, 99, 255, 0.4);
+            color: white;
+        }
+
+        .btn-gradient::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to right, var(--secondary), var(--primary));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .btn-gradient:hover::after {
+            opacity: 1;
+        }
+
+        /* Social Icons */
+        .social-icon {
             width: 50px;
             height: 50px;
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            background: linear-gradient(to right, var(--primary), var(--secondary));
+            background: rgba(255, 255, 255, 0.15);
             color: white;
             border-radius: 50%;
-            margin-right: 15px;
-        }
-
-        .btn-gradient {
-            background: linear-gradient(to right, var(--primary), var(--secondary));
-            border: none;
-            color: white;
+            margin: 0 12px;
             transition: all 0.3s ease;
-        }
-
-        .btn-gradient:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
-            color: white;
-        }
-
-        .social-icon {
-            width: 40px;
-            height: 40px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            background: rgba(255, 255, 255, 0.1);
-            color: white;
-            border-radius: 50%;
-            margin: 0 10px;
-            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
         }
 
         .social-icon:hover {
             background: white;
             color: var(--primary);
-            transform: translateY(-3px);
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
         }
 
+        .social-icon::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: white;
+            border-radius: 50%;
+            transform: scale(0);
+            transition: transform 0.3s ease;
+        }
+
+        .social-icon:hover::after {
+            transform: scale(1);
+            opacity: 0;
+        }
+
+        .social-icon i {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Footer */
         footer {
-            background: var(--dark);
+            background: var(--darker);
             color: white;
+            position: relative;
         }
 
         .footer-icon {
@@ -198,28 +376,88 @@
 
         .footer-icon:hover {
             color: var(--primary);
-            transform: translateY(-3px);
+            transform: translateY(-5px) scale(1.1);
+        }
+
+        /* Floating Elements */
+        .floating {
+            animation: floating 6s ease-in-out infinite;
+        }
+
+        @keyframes floating {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 992px) {
+            .hero-section {
+                padding: 150px 0 80px;
+            }
+            
+            .profile-img {
+                width: 180px;
+                height: 180px;
+            }
         }
 
         @media (max-width: 768px) {
             .hero-section {
-                padding: 120px 0 80px;
+                padding: 130px 0 60px;
             }
+            
+            .section-title::after {
+                bottom: -12px;
+                width: 60px;
+            }
+            
+            .contact-icon {
+                width: 50px;
+                height: 50px;
+                margin-right: 15px;
+            }
+        }
 
+        @media (max-width: 576px) {
             .profile-img {
-                width: 200px;
-                height: 200px;
+                width: 150px;
+                height: 150px;
             }
+            
+            .hero-section h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-section p {
+                font-size: 1.1rem;
+            }
+        }
+
+        /* Animation Classes */
+        .animate-delay-1 {
+            animation-delay: 0.2s;
+        }
+        
+        .animate-delay-2 {
+            animation-delay: 0.4s;
+        }
+        
+        .animate-delay-3 {
+            animation-delay: 0.6s;
         }
     </style>
 </head>
 
 <body data-bs-spy="scroll" data-bs-target="#navbar">
     <!-- Navigation -->
-    <nav id="navbar" class="navbar navbar-expand-lg navbar-dark fixed-top py-3">
+    <nav id="navbar" class="navbar navbar-expand-lg navbar-dark fixed-top">
         <div class="container">
-            <a class="navbar-brand fw-bold" href="#">Aryan Saeed</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <a class="navbar-brand fw-bold d-flex align-items-center" href="#home">
+                <img src="./img/WhatsApp Image 2025-04-29 at 06.41.51_daf4792a.jpg" alt="Logo" class="nav-logo">
+                <span class="d-none d-sm-inline">Aryan Saeed</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
@@ -249,42 +487,70 @@
 
     <!-- Hero Section -->
     <section id="home" class="hero-section text-center d-flex align-items-center">
-        <div class="container">
-            <a href="https://imgbb.com/"><img src="https://i.ibb.co/tSB3HMW/Untitled-design-3.png" alt="Untitled-design-3" border="0" class="profile-img rounded-circle mb-4" border="0"></a>
-            <h1 class="display-4 fw-bold mb-3">Aryan Saeed</h1>
-            <p class="lead fs-4 mb-4">Full Stack Developer</p>
-            <div class="d-flex justify-content-center">
-                <a href="https://github.com/aryansaeed09" class="social-icon mx-2">
-                    <i class="fab fa-github"></i>
-                </a>
-                <a href="https://youtube.com/@aryansaeed09?si=K2j55v_JipdM9Gfp" class="social-icon mx-2">
-                    <i class="fab fa-youtube"></i>
-                </a>
-                <a href="https://www.facebook.com/people/Muhammad-Aryan/pfbid02dR28GHBK5mTRtoBtKScFVbojV1353J6ekt2qJm3FvjRwRaVHUUfZ8mAY3fcQcVmal/?rdid=rAaR4uPu1qqGJSI8&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F16S6K3qn9N%2F"
-                    class="social-icon mx-2">
-                    <i class="fab fa-facebook-f"></i>
-                </a>
+        <div id="particles-js"></div>
+        <div class="container hero-content">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <img src="https://i.ibb.co/tSB3HMW/Untitled-design-3.png" class="profile-img rounded-circle mb-4 floating" alt="Aryan Saeed">
+                    <h1 class="display-4 fw-bold mb-3 animate__animated animate__fadeInDown">Aryan Saeed</h1>
+                    <p class="lead fs-3 mb-4 animate__animated animate__fadeInDown animate-delay-1">Full Stack Developer & Digital Creator</p>
+                    <div class="d-flex justify-content-center animate__animated animate__fadeInUp animate-delay-2">
+                        <a href="https://github.com/aryansaeed09" class="social-icon mx-2">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://youtube.com/@aryansaeed09?si=K2j55v_JipdM9Gfp" class="social-icon mx-2">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                        <a href="https://www.facebook.com/people/Muhammad-Aryan/pfbid02dR28GHBK5mTRtoBtKScFVbojV1353J6ekt2qJm3FvjRwRaVHUUfZ8mAY3fcQcVmal/?rdid=rAaR4uPu1qqGJSI8&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F16S6K3qn9N%2F" class="social-icon mx-2">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://www.instagram.com/aryansaeed906?igsh=YzljYTk1ODg3Zg==" class="social-icon mx-2">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://www.tiktok.com/@aryansaeed09?_t=ZS-8vuTVNJarW4&_r=1" class="social-icon mx-2">
+                            <i class="fab fa-tiktok"></i>
+                        </a>
+                    </div>
+                    <a href="#contact" class="btn btn-gradient btn-lg mt-4 px-4 py-3 animate__animated animate__fadeInUp animate-delay-3">
+                        <i class="fas fa-paper-plane me-2"></i>Get In Touch
+                    </a>
+                </div>
             </div>
-            <a href="#contact" class="btn btn-gradient btn-lg mt-4 px-4 py-2">Get In Touch</a>
         </div>
     </section>
 
     <!-- About Section -->
     <section id="about" class="py-5 bg-light">
         <div class="container py-5">
-            <h2 class="text-center section-title fw-bold">About Me</h2>
-            <div class="row justify-content-center">
+            <h2 class="text-center section-title fw-bold animate__animated animate__fadeIn">About Me</h2>
+            <div class="row justify-content-center animate__animated animate__fadeIn animate-delay-1">
                 <div class="col-lg-8 text-center">
-                    <p class="lead fs-5">
-                        I'm a passionate Full Stack Developer with expertise in both front-end and back-end
-                        technologies. I love creating efficient, scalable, and user-friendly web applications that solve
-                        real-world
-                        problems.
+                    <p class="lead fs-5 mb-4">
+                        I'm a passionate Full Stack Developer with expertise in both front-end and back-end technologies. I specialize in creating efficient, scalable, and user-friendly web applications that solve real-world problems and deliver exceptional user experiences.
                     </p>
-                    <p class="mb-0">
-                        With a strong foundation in computer science and hands-on experience in various technologies,
-                        I bring a comprehensive approach to web development projects.
-                    </p>
+                    <div class="row g-4 mt-4">
+                        <div class="col-md-4">
+                            <div class="p-3 bg-white rounded shadow-sm">
+                                <i class="fas fa-code text-primary mb-3" style="font-size: 2rem;"></i>
+                                <h5 class="fw-bold">Clean Code</h5>
+                                <p class="mb-0">Well-structured and maintainable code following best practices</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="p-3 bg-white rounded shadow-sm">
+                                <i class="fas fa-mobile-alt text-primary mb-3" style="font-size: 2rem;"></i>
+                                <h5 class="fw-bold">Responsive Design</h5>
+                                <p class="mb-0">Perfectly working on all device sizes</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="p-3 bg-white rounded shadow-sm">
+                                <i class="fas fa-rocket text-primary mb-3" style="font-size: 2rem;"></i>
+                                <h5 class="fw-bold">High Performance</h5>
+                                <p class="mb-0">Fast loading and optimized applications</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -293,14 +559,14 @@
     <!-- Skills Section -->
     <section id="skills" class="py-5">
         <div class="container py-5">
-            <h2 class="text-center section-title fw-bold">Skills</h2>
-            <div class="row g-4">
+            <h2 class="text-center section-title fw-bold animate__animated animate__fadeIn">My Skills</h2>
+            <div class="row g-4 animate__animated animate__fadeIn animate-delay-1">
                 <!-- Frontend Skills -->
                 <div class="col-md-4">
                     <div class="card skill-card h-100 border-0">
                         <div class="card-body text-center p-4">
                             <i class="fas fa-laptop-code skill-icon mb-3"></i>
-                            <h5 class="card-title fw-bold mb-3">Frontend</h5>
+                            <h5 class="card-title fw-bold mb-3">Frontend Development</h5>
                             <p class="card-text">
                                 <span class="badge bg-primary bg-opacity-10 text-primary badge-tech">HTML5</span>
                                 <span class="badge bg-primary bg-opacity-10 text-primary badge-tech">CSS3</span>
@@ -320,7 +586,7 @@
                     <div class="card skill-card h-100 border-0">
                         <div class="card-body text-center p-4">
                             <i class="fas fa-server skill-icon mb-3"></i>
-                            <h5 class="card-title fw-bold mb-3">Backend</h5>
+                            <h5 class="card-title fw-bold mb-3">Backend Development</h5>
                             <p class="card-text">
                                 <span class="badge bg-success bg-opacity-10 text-success badge-tech">Node.js</span>
                                 <span class="badge bg-success bg-opacity-10 text-success badge-tech">Express</span>
@@ -329,6 +595,7 @@
                                 <span class="badge bg-success bg-opacity-10 text-success badge-tech">PHP</span>
                                 <span class="badge bg-success bg-opacity-10 text-success badge-tech">Laravel</span>
                                 <span class="badge bg-success bg-opacity-10 text-success badge-tech">RESTful APIs</span>
+                                <span class="badge bg-success bg-opacity-10 text-success badge-tech">GraphQL</span>
                             </p>
                         </div>
                     </div>
@@ -339,7 +606,7 @@
                     <div class="card skill-card h-100 border-0">
                         <div class="card-body text-center p-4">
                             <i class="fas fa-database skill-icon mb-3"></i>
-                            <h5 class="card-title fw-bold mb-3">Database & More</h5>
+                            <h5 class="card-title fw-bold mb-3">Database & DevOps</h5>
                             <p class="card-text">
                                 <span class="badge bg-info bg-opacity-10 text-info badge-tech">MySQL</span>
                                 <span class="badge bg-info bg-opacity-10 text-info badge-tech">MongoDB</span>
@@ -360,24 +627,27 @@
     <!-- Projects Section -->
     <section id="projects" class="py-5 bg-light">
         <div class="container py-5">
-            <h2 class="text-center section-title fw-bold">My Projects</h2>
-            <div class="row g-4">
+            <h2 class="text-center section-title fw-bold animate__animated animate__fadeIn">Featured Projects</h2>
+            <div class="row g-4 animate__animated animate__fadeIn animate-delay-1">
                 <!-- Project 1 -->
                 <div class="col-lg-4 col-md-6">
                     <div class="card project-card h-100 border-0">
-                        <img src="./img/WhatsApp Image 2025-04-17 at 8.26.24 AM.jpeg" class="card-img-top project-img"
-                            alt="E-commerce Platform">
+                        <div class="project-img-container">
+                            <img src="./img/WhatsApp Image 2025-04-17 at 8.26.24 AM.jpeg" class="project-img" alt="E-commerce Platform">
+                        </div>
                         <div class="card-body">
                             <h5 class="card-title fw-bold">E-commerce Platform</h5>
-                            <p class="card-text">A full-featured online store with product listings, cart functionality,
-                                and secure payment processing.</p>
+                            <p class="card-text">A full-featured online store with product listings, cart functionality, secure payment processing, and admin dashboard.</p>
                             <div class="mb-3">
                                 <span class="badge bg-primary bg-opacity-10 text-primary badge-tech">React</span>
                                 <span class="badge bg-success bg-opacity-10 text-success badge-tech">Node.js</span>
                                 <span class="badge bg-info bg-opacity-10 text-info badge-tech">MongoDB</span>
                                 <span class="badge bg-warning bg-opacity-10 text-warning badge-tech">Stripe API</span>
                             </div>
-                            <a href="https://github.com/Aryansaeed09/newapp" class="btn btn-outline-primary">View Code</a>
+                            <div class="d-flex justify-content-between">
+                                <a href="#" class="btn btn-outline-primary btn-sm">View Demo</a>
+                                <a href="#" class="btn btn-gradient btn-sm">View Code</a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -385,19 +655,22 @@
                 <!-- Project 2 -->
                 <div class="col-lg-4 col-md-6">
                     <div class="card project-card h-100 border-0">
-                        <img src="./img/WhatsApp Image 2025-04-17 at 8.26.24 AM.jpeg" class="card-img-top project-img"
-                            alt="Task Management App">
+                        <div class="project-img-container">
+                            <img src="./img/WhatsApp Image 2025-04-17 at 8.26.24 AM.jpeg" class="project-img" alt="Task Management App">
+                        </div>
                         <div class="card-body">
                             <h5 class="card-title fw-bold">Task Management App</h5>
-                            <p class="card-text">A productivity application for organizing tasks with drag-and-drop
-                                functionality and team collaboration features.</p>
+                            <p class="card-text">A productivity application for organizing tasks with drag-and-drop functionality, team collaboration, and real-time updates.</p>
                             <div class="mb-3">
                                 <span class="badge bg-primary bg-opacity-10 text-primary badge-tech">Vue.js</span>
                                 <span class="badge bg-success bg-opacity-10 text-success badge-tech">Firebase</span>
                                 <span class="badge bg-danger bg-opacity-10 text-danger badge-tech">Firestore</span>
                                 <span class="badge bg-secondary bg-opacity-10 text-secondary badge-tech">Vuex</span>
                             </div>
-                            <a href="https://github.com/Aryansaeed09/blogpost" class="btn btn-outline-primary">View Code</a>
+                            <div class="d-flex justify-content-between">
+                                <a href="#" class="btn btn-outline-primary btn-sm">View Demo</a>
+                                <a href="#" class="btn btn-gradient btn-sm">View Code</a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -405,27 +678,30 @@
                 <!-- Project 3 -->
                 <div class="col-lg-4 col-md-6">
                     <div class="card project-card h-100 border-0">
-                        <img src="./img/WhatsApp Image 2025-04-17 at 8.26.24 AM.jpeg" class="card-img-top project-img"
-                            alt="Social Media Dashboard">
+                        <div class="project-img-container">
+                            <img src="./img/WhatsApp Image 2025-04-17 at 8.26.24 AM.jpeg" class="project-img" alt="Social Media Dashboard">
+                        </div>
                         <div class="card-body">
                             <h5 class="card-title fw-bold">Social Media Dashboard</h5>
-                            <p class="card-text">Analytics dashboard for social media managers with real-time data
-                                visualization and reporting tools.</p>
+                            <p class="card-text">Analytics dashboard for social media managers with real-time data visualization, reporting tools, and cross-platform integration.</p>
                             <div class="mb-3">
                                 <span class="badge bg-primary bg-opacity-10 text-primary badge-tech">Angular</span>
                                 <span class="badge bg-success bg-opacity-10 text-success badge-tech">Python</span>
                                 <span class="badge bg-info bg-opacity-10 text-info badge-tech">Django</span>
                                 <span class="badge bg-dark bg-opacity-10 text-dark badge-tech">Chart.js</span>
                             </div>
-                            <a href="https://github.com/Aryansaeed09/school_project" class="btn btn-outline-primary">View Code</a>
+                            <div class="d-flex justify-content-between">
+                                <a href="#" class="btn btn-outline-primary btn-sm">View Demo</a>
+                                <a href="#" class="btn btn-gradient btn-sm">View Code</a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="text-center mt-5">
-                <a href="https://github.com/aryansaeed09" class="btn btn-gradient px-4 py-2" target="_blank">
-                    <i class="fab fa-github me-2"></i>View More Projects on GitHub
+            <div class="text-center mt-5 animate__animated animate__fadeIn animate-delay-2">
+                <a href="https://github.com/aryansaeed09" class="btn btn-gradient px-4 py-3" target="_blank">
+                    <i class="fab fa-github me-2"></i>Explore More Projects on GitHub
                 </a>
             </div>
         </div>
@@ -434,35 +710,39 @@
     <!-- Education Section -->
     <section id="education" class="py-5">
         <div class="container py-5">
-            <h2 class="text-center section-title fw-bold">Education</h2>
-            <div class="row justify-content-center">
+            <h2 class="text-center section-title fw-bold animate__animated animate__fadeIn">Education & Experience</h2>
+            <div class="row justify-content-center animate__animated animate__fadeIn animate-delay-1">
                 <div class="col-lg-8">
                     <div class="timeline">
                         <!-- Intermediate College -->
                         <div class="timeline-item pb-4">
-                            <h4 class="fw-bold">Intermediate (College)</h4>
-                            <h5 class="text-primary">AIMS School And College Lodhran</h5>
-                            <p class="text-muted">2022 - 2024</p>
-                            <p>Completed intermediate education with focus on science subjects.</p>
+                            <div class="bg-white p-4 rounded shadow-sm">
+                                <h4 class="fw-bold">Intermediate (College)</h4>
+                                <h5 class="text-primary">AIMS School And College Lodhran</h5>
+                                <p class="text-muted mb-2"><i class="far fa-calendar-alt me-2"></i>2022 - 2024</p>
+                                <p>Completed intermediate education with focus on science subjects including Physics, Chemistry, and Mathematics, laying a strong foundation for technical education.</p>
+                            </div>
                         </div>
 
                         <!-- Microsoft Office Course -->
                         <div class="timeline-item pb-4">
-                            <h4 class="fw-bold">Microsoft Office Course</h4>
-                            <h5 class="text-primary">Tareen Institute of Computer Education & Resources (TICER)</h5>
-                            <p class="text-muted">2024</p>
-                            <p>South Punjab's Hub for Advanced IT Education. Learned essential office productivity tools
-                                including Word, Excel, and PowerPoint.</p>
-                        </div>
-                        <!-- Full Stack Development Course -->
-                        <div class="timeline-item pb-4">
-                            <h4 class="fw-bold">Full Stack Development Course</h4>
-                            <h5 class="text-primary">Tareen Institute of Computer Education & Resources (TICER)</h5>
-                            <p class="text-muted">2025</p>
-                            <p>South Punjab's Hub for Advanced IT Education. Comprehensive training in modern web
-                                development technologies.</p>
+                            <div class="bg-white p-4 rounded shadow-sm">
+                                <h4 class="fw-bold">Microsoft Office Certification</h4>
+                                <h5 class="text-primary">Tareen Institute of Computer Education & Resources (TICER)</h5>
+                                <p class="text-muted mb-2"><i class="far fa-calendar-alt me-2"></i>2024</p>
+                                <p>South Punjab's premier institute for IT education. Completed comprehensive training in essential office productivity tools including advanced Excel functions, professional document formatting in Word, and effective presentation design in PowerPoint.</p>
+                            </div>
                         </div>
 
+                        <!-- Full Stack Development Course -->
+                        <div class="timeline-item pb-4">
+                            <div class="bg-white p-4 rounded shadow-sm">
+                                <h4 class="fw-bold">Full Stack Development Certification</h4>
+                                <h5 class="text-primary">Tareen Institute of Computer Education & Resources (TICER)</h5>
+                                <p class="text-muted mb-2"><i class="far fa-calendar-alt me-2"></i>2025</p>
+                                <p>Intensive training program covering modern web development technologies including HTML5, CSS3, JavaScript, React, Node.js, Express, MongoDB, and deployment strategies. Developed multiple real-world projects and gained hands-on experience with industry best practices.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -472,57 +752,64 @@
     <!-- Contact Section -->
     <section id="contact" class="py-5 bg-light">
         <div class="container py-5">
-            <h2 class="text-center section-title fw-bold">Contact Me</h2>
-            <div class="row justify-content-center">
+            <h2 class="text-center section-title fw-bold animate__animated animate__fadeIn">Get In Touch</h2>
+            <div class="row justify-content-center animate__animated animate__fadeIn animate-delay-1">
                 <div class="col-lg-8">
-                    <div class="card border-0 shadow-sm">
-                        <div class="card-body p-5">
-                            <ul class="list-unstyled mb-0">
-                                <li class="mb-4 d-flex align-items-center">
-                                    <i class="fas fa-envelope contact-icon"></i>
-                                    <a href="mailto:aryansaeed906@gmail.com" class="text-decoration-none text-dark fs-5">
-                                        aryansaeed906@gmail.com
-                                    </a>
-                                </li>
-                                <li class="mb-4 d-flex align-items-center">
-                                    <i class="fab fa-whatsapp contact-icon"></i>
-                                    <a href="https://wa.me/923293751706" target="_blank" class="text-decoration-none text-dark fs-5">
-                                        Chat on WhatsApp
-                                    </a>
-                                </li>
-                                <li class="mb-4 d-flex align-items-center">
-                                    <i class="fab fa-github contact-icon"></i>
-                                    <a href="https://github.com/aryansaeed09" target="_blank" class="text-decoration-none text-dark fs-5">
-                                        github.com/aryansaeed09
-                                    </a>
-                                </li>
-                                <li class="mb-4 d-flex align-items-center">
-                                    <i class="fab fa-youtube contact-icon"></i>
-                                    <a href="https://youtube.com/@aryansaeed09?si=K2j55v_JipdM9Gfp" target="_blank" class="text-decoration-none text-dark fs-5">
-                                        youtube.com/@aryansaeed09
-                                    </a>
-                                </li>
-                                <li class="mb-4 d-flex align-items-center">
-                                    <i class="fab fa-facebook-f contact-icon"></i>
-                                    <a href="https://www.facebook.com/people/Muhammad-Aryan/pfbid02dR28GHBK5mTRtoBtKScFVbojV1353J6ekt2qJm3FvjRwRaVHUUfZ8mAY3fcQcVmal/?rdid=rAaR4uPu1qqGJSI8&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F16S6K3qn9N%2F" 
-                                       target="_blank" class="text-decoration-none text-dark fs-5">
-                                        facebook.com/MuhammadAryan
-                                    </a>
-                                </li>
-                                <li class="mb-4 d-flex align-items-center">
-                                    <i class="fab fa-instagram contact-icon"></i>
-                                    <a href="https://www.instagram.com/aryansaeed906?igsh=YzljYTk1ODg3Zg==" target="_blank" class="text-decoration-none text-dark fs-5">
-                                        instagram.com/aryansaeed906
-                                    </a>
-                                </li>
-                                <li class="d-flex align-items-center">
-                                    <i class="fab fa-tiktok contact-icon"></i>
-                                    <a href="https://www.tiktok.com/@aryansaeed09?_t=ZS-8vuTVNJarW4&_r=1" target="_blank" class="text-decoration-none text-dark fs-5">
-                                        tiktok.com/@aryansaeed09
-                                    </a>
-                                </li>
-                                
-                            </ul>
+                    <div class="card border-0 shadow-sm overflow-hidden">
+                        <div class="row g-0">
+                            <div class="col-md-6 d-flex align-items-center" style="background: var(--gradient);">
+                                <div class="p-5 text-white text-center">
+                                    <h3 class="fw-bold mb-4">Let's Work Together!</h3>
+                                    <p class="mb-4">Have a project in mind or want to discuss potential opportunities? Feel free to reach out!</p>
+                                    <div class="d-flex justify-content-center">
+                                        <a href="https://wa.me/923293751706" class="social-icon mx-2 bg-white text-primary">
+                                            <i class="fab fa-whatsapp"></i>
+                                        </a>
+                                        <a href="mailto:aryansaeed906@gmail.com" class="social-icon mx-2 bg-white text-primary">
+                                            <i class="fas fa-envelope"></i>
+                                        </a>
+                                        <a href="tel:+923293751706" class="social-icon mx-2 bg-white text-primary">
+                                            <i class="fas fa-phone"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="card-body p-5">
+                                    <ul class="list-unstyled mb-0">
+                                        <li class="mb-4 d-flex align-items-center contact-item">
+                                            <i class="fas fa-envelope contact-icon"></i>
+                                            <a href="mailto:aryansaeed906@gmail.com" class="text-decoration-none text-dark fs-5">
+                                                aryansaeed906@gmail.com
+                                            </a>
+                                        </li>
+                                        <li class="mb-4 d-flex align-items-center contact-item">
+                                            <i class="fab fa-whatsapp contact-icon"></i>
+                                            <a href="https://wa.me/923293751706" target="_blank" class="text-decoration-none text-dark fs-5">
+                                                +92 329 3751706
+                                            </a>
+                                        </li>
+                                        <li class="mb-4 d-flex align-items-center contact-item">
+                                            <i class="fab fa-github contact-icon"></i>
+                                            <a href="https://github.com/aryansaeed09" target="_blank" class="text-decoration-none text-dark fs-5">
+                                                github.com/aryansaeed09
+                                            </a>
+                                        </li>
+                                        <li class="mb-4 d-flex align-items-center contact-item">
+                                            <i class="fab fa-youtube contact-icon"></i>
+                                            <a href="https://youtube.com/@aryansaeed09?si=K2j55v_JipdM9Gfp" target="_blank" class="text-decoration-none text-dark fs-5">
+                                                youtube.com/@aryansaeed09
+                                            </a>
+                                        </li>
+                                        <li class="mb-4 d-flex align-items-center contact-item">
+                                            <i class="fab fa-facebook-f contact-icon"></i>
+                                            <a href="https://www.facebook.com/people/Muhammad-Aryan/pfbid02dR28GHBK5mTRtoBtKScFVbojV1353J6ekt2qJm3FvjRwRaVHUUfZ8mAY3fcQcVmal/?rdid=rAaR4uPu1qqGJSI8&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F16S6K3qn9N%2F" target="_blank" class="text-decoration-none text-dark fs-5">
+                                                facebook.com/MuhammadAryan
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -531,64 +818,10 @@
     </section>
 
     <!-- Footer Section -->
-    <footer class="py-4">
+    <footer class="py-5">
         <div class="container text-center">
-            <div class="mb-3">
+            <div class="mb-4">
                 <a href="https://github.com/aryansaeed09" target="_blank" class="footer-icon mx-2">
                     <i class="fab fa-github"></i>
                 </a>
-                <a href="https://youtube.com/@aryansaeed09?si=K2j55v_JipdM9Gfp" target="_blank"
-                    class="footer-icon mx-2">
-                    <i class="fab fa-youtube"></i>
-                </a>
-                <a href="https://www.facebook.com/people/Muhammad-Aryan/pfbid02dR28GHBK5mTRtoBtKScFVbojV1353J6ekt2qJm3FvjRwRaVHUUfZ8mAY3fcQcVmal/?rdid=rAaR4uPu1qqGJSI8&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F16S6K3qn9N%2F"
-                    target="_blank" class="footer-icon mx-2">
-                    <i class="fab fa-facebook-f"></i>
-                </a>
-                <a href="https://www.instagram.com/aryansaeed906?igsh=YzljYTk1ODg3Zg==" target="_blank"
-                    class="footer-icon mx-2">
-                    <i class="fab fa-instagram"></i>
-                </a>
-                <a href="https://www.tiktok.com/@aryansaeed09?_t=ZS-8vuTVNJarW4&_r=1" target="_blank"
-                    class="footer-icon mx-2">
-                    <i class="fab fa-tiktok"></i>
-                </a>
-            </div>
-            <p class="mb-0">&copy; 2025 Aryan Saeed. All Rights Reserved.</p>
-        </div>
-    </footer>
-
-    <!-- Bootstrap 5 JS Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        // Navbar scroll effect
-        window.addEventListener('scroll', function () {
-            const navbar = document.querySelector('.navbar');
-            if (window.scrollY > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-        });
-
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
-
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 70,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-    </script>
-</body>
-
-</html>
+                <a href="https://youtube.com/@aryansaeed09?si=K2j55v_JipdM9Gfp" target="_blank
