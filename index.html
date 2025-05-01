@@ -1,3 +1,8 @@
+# Responsive Portfolio Website for Aryan Saeed
+
+Here's a fully responsive, clean, and beautiful UI design for your portfolio website with several improvements:
+
+```html
 <!DOCTYPE html>
 <html lang="en">
 
@@ -667,6 +672,154 @@
                 color: #f8f9fa !important;
             }
         }
+
+        .floating-shapes {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            overflow: hidden;
+            z-index: 0;
+            pointer-events: none;
+            /* Prevent interaction with shapes */
+        }
+
+        .shape {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            filter: blur(1px);
+            /* Soft edges for better aesthetics */
+            will-change: transform;
+            /* Optimize animation performance */
+        }
+
+        .shape-1 {
+            width: 150px;
+            height: 150px;
+            top: 20%;
+            left: 10%;
+            animation: float 18s infinite ease-in-out;
+        }
+
+        .shape-2 {
+            width: 250px;
+            height: 250px;
+            top: 60%;
+            left: 70%;
+            animation: float 22s infinite ease-in-out;
+            animation-delay: -5s;
+            /* Different start times for variety */
+        }
+
+        .shape-3 {
+            width: 100px;
+            height: 100px;
+            top: 80%;
+            left: 30%;
+            animation: float 15s infinite ease-in-out;
+            animation-delay: -8s;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+
+            25% {
+                transform: translate(50px, 50px) rotate(5deg);
+            }
+
+            50% {
+                transform: translate(100px, -30px) rotate(10deg);
+            }
+
+            75% {
+                transform: translate(-20px, 80px) rotate(5deg);
+            }
+
+            100% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+        }
+        .floating-shapes {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        overflow: hidden;
+        z-index: 0;
+        pointer-events: none; /* Prevents blocking clicks */
+    }
+
+    .shape {
+        position: absolute;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(5px); /* Frosted glass effect */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        will-change: transform; /* Optimizes animations */
+        box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+    }
+
+    .shape p {
+        color: white;
+        font-family: 'Arial', sans-serif;
+        font-weight: bold;
+        text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        opacity: 0.8;
+    }
+
+    /* Shape 1 */
+    .shape-1 {
+        width: 180px;
+        height: 180px;
+        top: 20%;
+        left: 15%;
+        animation: float 18s infinite ease-in-out;
+    }
+
+    /* Shape 2 */
+    .shape-2 {
+        width: 220px;
+        height: 220px;
+        top: 60%;
+        left: 70%;
+        animation: float 22s infinite ease-in-out;
+        animation-delay: -5s;
+    }
+
+    /* Shape 3 */
+    .shape-3 {
+        width: 140px;
+        height: 140px;
+        top: 80%;
+        left: 30%;
+        animation: float 15s infinite ease-in-out;
+        animation-delay: -8s;
+    }
+
+    @keyframes float {
+        0% {
+            transform: translate(0, 0) rotate(0deg);
+        }
+        25% {
+            transform: translate(50px, 50px) rotate(5deg);
+        }
+        50% {
+            transform: translate(100px, -30px) rotate(10deg);
+        }
+        75% {
+            transform: translate(-20px, 80px) rotate(5deg);
+        }
+        100% {
+            transform: translate(0, 0) rotate(0deg);
+        }
+    }
     </style>
 </head>
 
@@ -680,8 +833,9 @@
     <nav id="navbar" class="navbar navbar-expand-lg navbar-dark fixed-top">
         <div class="container">
             <a class="navbar-brand" href="#home">
-                <img src="https://i.ibb.co/fdS6nJrJ/Untitled-design-6.png" alt="Aryan Saeed Logo" class="nav-logo"
-                <span>Aryan Saeed</span>
+                <img src="./img/WhatsApp Image 2025-04-29 at 06.41.51_daf4792a.jpg" alt="Aryan Saeed Logo"
+                    class="nav-logo">
+                <span>Aryan Developer</span>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -715,14 +869,25 @@
     <!-- Hero Section -->
     <section id="home" class="hero-section text-center d-flex align-items-center">
         <div class="floating-shapes">
-            <div class="shape"></div>
-            <div class="shape"></div>
-            <div class="shape"></div>
+            <div class="shape shape-1">
+                <p>Aryan Developer</p>
+            </div>
+            <div class="shape shape-2">
+                <p>Aryan Developer</p>
+            </div>
+            <div class="shape shape-3">
+                <p>Aryan Developer</p>
+            </div>
         </div>
+        
+        
         <div class="container position-relative">
-            
-           <img src="https://i.ibb.co/fdS6nJrJ/Untitled-design-6.png"   class="profile-img rounded-circle mb-4 animate__animated animate__fadeIn"
-                alt="Aryan Saeed Profile Picture" loading="lazy">
+           <img src="https://i.ibb.co/fdS6nJrJ/Untitled-design-6.png" class="profile-img rounded-circle mb-4 animate__animated animate__fadeIn"
+           alt="Aryan Saeed Profile Picture" loading="lazy">
+            <!-- <img src="https://i.ibb.co/tSB3HMW/Untitled-design-3.png"
+                class="profile-img rounded-circle mb-4 animate__animated animate__fadeIn"
+                alt="Aryan Saeed Profile Picture" loading="lazy"> -->
+
             <h1 class="display-4 fw-bold mb-3 animate__animated animate__fadeInDown">Aryan Saeed</h1>
             <div class="typewriter mb-4 animate__animated animate__fadeIn">
                 <p class="lead fs-3">Full Stack Developer</p>
@@ -786,7 +951,8 @@
                                 <span class="badge bg-primary bg-opacity-10 text-primary badge-tech">HTML5</span>
                                 <span class="badge bg-primary bg-opacity-10 text-primary badge-tech">CSS3</span>
                                 <span class="badge bg-primary bg-opacity-10 text-primary badge-tech">JavaScript</span>
-                                <span class="badge bg-primary bg-opacity-10 text-primary badge-tech">React</span> 
+                                <span class="badge bg-primary bg-opacity-10 text-primary badge-tech">React</span>
+                                <span class="badge bg-primary bg-opacity-10 text-primary badge-tech">Angular</span>
                                 <span class="badge bg-primary bg-opacity-10 text-primary badge-tech">Vue.js</span>
                                 <span class="badge bg-primary bg-opacity-10 text-primary badge-tech">Bootstrap</span>
                                 <span class="badge bg-primary bg-opacity-10 text-primary badge-tech">Tailwind CSS</span>
@@ -802,8 +968,10 @@
                             <i class="fas fa-server skill-icon mb-3"></i>
                             <h5 class="card-title fw-bold mb-3">Backend</h5>
                             <p class="card-text">
+                                <span class="badge bg-success bg-opacity-10 text-success badge-tech">Node.js</span>
                                 <span class="badge bg-success bg-opacity-10 text-success badge-tech">Express</span>
                                 <span class="badge bg-success bg-opacity-10 text-success badge-tech">Python</span>
+                                <span class="badge bg-success bg-opacity-10 text-success badge-tech">Django</span>
                                 <span class="badge bg-success bg-opacity-10 text-success badge-tech">PHP</span>
                                 <span class="badge bg-success bg-opacity-10 text-success badge-tech">Laravel</span>
                                 <span class="badge bg-success bg-opacity-10 text-success badge-tech">RESTful APIs</span>
@@ -820,11 +988,13 @@
                             <h5 class="card-title fw-bold mb-3">Database & More</h5>
                             <p class="card-text">
                                 <span class="badge bg-info bg-opacity-10 text-info badge-tech">MySQL</span>
+                                <span class="badge bg-info bg-opacity-10 text-info badge-tech">MongoDB</span>
                                 <span class="badge bg-info bg-opacity-10 text-info badge-tech">PostgreSQL</span>
                                 <span class="badge bg-info bg-opacity-10 text-info badge-tech">Firebase</span>
                                 <span class="badge bg-warning bg-opacity-10 text-warning badge-tech">Git</span>
+                                <span class="badge bg-warning bg-opacity-10 text-warning badge-tech">Docker</span>
                                 <span class="badge bg-warning bg-opacity-10 text-warning badge-tech">AWS</span>
-            
+                                <span class="badge bg-warning bg-opacity-10 text-warning badge-tech">CI/CD</span>
                             </p>
                         </div>
                     </div>
@@ -844,18 +1014,16 @@
                         <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
                             class="card-img-top project-img" alt="E-commerce Platform" loading="lazy">
                         <div class="card-body">
-                           <h5 class="card-title fw-bold">School Management System</h5>
-<p class="card-text">
-A comprehensive web-based platform designed to manage student records, attendance, staff, grades, and more — streamlining school administration processes efficiently.
-</p>
-<div class="mb-3">
-<span class="badge bg-primary bg-opacity-10 text-primary badge-tech">HTML</span>
-<span class="badge bg-success bg-opacity-10 text-success badge-tech">CSS</span>
-<span class="badge bg-info bg-opacity-10 text-info badge-tech">Bootstrap</span>
-<span class="badge bg-warning bg-opacity-10 text-warning badge-tech">JavaScript</span>
-</div>
-<a href="https://github.com/Aryansaeed09/school_project" class="btn btn-outline-primary">View Project</a>
-
+                            <h5 class="card-title fw-bold">E-commerce Platform</h5>
+                            <p class="card-text">A full-featured online store with product listings, cart functionality,
+                                and secure payment processing.</p>
+                            <div class="mb-3">
+                                <span class="badge bg-primary bg-opacity-10 text-primary badge-tech">React</span>
+                                <span class="badge bg-success bg-opacity-10 text-success badge-tech">Node.js</span>
+                                <span class="badge bg-info bg-opacity-10 text-info badge-tech">MongoDB</span>
+                                <span class="badge bg-warning bg-opacity-10 text-warning badge-tech">Stripe API</span>
+                            </div>
+                            <a href="#" class="btn btn-outline-primary">View Project</a>
                         </div>
                     </div>
                 </div>
@@ -866,18 +1034,16 @@ A comprehensive web-based platform designed to manage student records, attendanc
                         <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
                             class="card-img-top project-img" alt="Task Management App" loading="lazy">
                         <div class="card-body">
-                           <h5 class="card-title fw-bold">Mobile Inventory App</h5>
-<p class="card-text">
-A responsive inventory management system for tracking mobile devices, managing stock levels, sales, and supplier data — built with a robust Java-MySQL backend.
-</p>
-<div class="mb-3">
-<span class="badge bg-primary bg-opacity-10 text-primary badge-tech">HTML</span>
-<span class="badge bg-success bg-opacity-10 text-success badge-tech">CSS</span>
-<span class="badge bg-info bg-opacity-10 text-info badge-tech">Bootstrap</span>
-<span class="badge bg-warning bg-opacity-10 text-warning badge-tech">Java</span>
-<span class="badge bg-danger bg-opacity-10 text-danger badge-tech">MySQL</span>
-</div>
-                            <a href="https://github.com/Aryansaeed09/MobileProject" class="btn btn-outline-primary">View Project</a>
+                            <h5 class="card-title fw-bold">Task Management App</h5>
+                            <p class="card-text">A productivity application for organizing tasks with drag-and-drop
+                                functionality and team collaboration features.</p>
+                            <div class="mb-3">
+                                <span class="badge bg-primary bg-opacity-10 text-primary badge-tech">Vue.js</span>
+                                <span class="badge bg-success bg-opacity-10 text-success badge-tech">Firebase</span>
+                                <span class="badge bg-danger bg-opacity-10 text-danger badge-tech">Firestore</span>
+                                <span class="badge bg-secondary bg-opacity-10 text-secondary badge-tech">Vuex</span>
+                            </div>
+                            <a href="#" class="btn btn-outline-primary">View Project</a>
                         </div>
                     </div>
                 </div>
@@ -888,18 +1054,16 @@ A responsive inventory management system for tracking mobile devices, managing s
                         <img src="https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
                             class="card-img-top project-img" alt="Social Media Dashboard" loading="lazy">
                         <div class="card-body">
-<h5 class="card-title fw-bold">Blog Post Application</h5>
-<p class="card-text">
-A dynamic blogging platform with post creation, user authentication, comment system, and attention-grabbing layouts — built using Laravel and MySQL with a clean front-end interface.
-</p>
-<div class="mb-3">
-<span class="badge bg-primary bg-opacity-10 text-primary badge-tech">HTML</span>
-<span class="badge bg-success bg-opacity-10 text-success badge-tech">CSS</span>
-<span class="badge bg-warning bg-opacity-10 text-warning badge-tech">JavaScript</span>
-<span class="badge bg-danger bg-opacity-10 text-danger badge-tech">MySQL</span>
-<span class="badge bg-secondary bg-opacity-10 text-secondary badge-tech">Laravel</span>
-</div>
-                            <a href="https://github.com/Aryansaeed09/blogpost" class="btn btn-outline-primary">View Project</a>
+                            <h5 class="card-title fw-bold">Social Media Dashboard</h5>
+                            <p class="card-text">Analytics dashboard for social media managers with real-time data
+                                visualization and reporting tools.</p>
+                            <div class="mb-3">
+                                <span class="badge bg-primary bg-opacity-10 text-primary badge-tech">Angular</span>
+                                <span class="badge bg-success bg-opacity-10 text-success badge-tech">Python</span>
+                                <span class="badge bg-info bg-opacity-10 text-info badge-tech">Django</span>
+                                <span class="badge bg-dark bg-opacity-10 text-dark badge-tech">Chart.js</span>
+                            </div>
+                            <a href="#" class="btn btn-outline-primary">View Project</a>
                         </div>
                     </div>
                 </div>
@@ -922,7 +1086,7 @@ A dynamic blogging platform with post creation, user authentication, comment sys
                     <div class="timeline">
                         <!-- Intermediate College -->
                         <div class="timeline-item pb-4">
-                            <span class="timeline-date">2022 - 2024</span>
+                            <span class="timeline-date">2024</span>
                             <h4 class="fw-bold">Intermediate (College)</h4>
                             <h5 class="text-primary">AIMS School And College Lodhran</h5>
                             <p>Completed intermediate education with focus on science subjects, laying the foundation
@@ -969,22 +1133,25 @@ A dynamic blogging platform with post creation, user authentication, comment sys
                                 </div>
                                 <div>
                                     <h5 class="fw-bold mb-1">Email</h5>
-                                    <a href="mailto:aryansaeed@example.com"
-                                        class="text-dark text-decoration-none">aryansaeed@example.com</a>
+                                    <a href="mailto:aryansaeed906@gmail.com" class="text-dark text-decoration-none">
+                                        aryansaeed906@gmail.com
+                                    </a>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Phone -->
+                        <!-- Phone (WhatsApp) -->
                         <div class="col-md-6">
                             <div class="d-flex align-items-center contact-card">
                                 <div class="contact-icon">
-                                    <i class="fas fa-phone"></i>
+                                    <i class="fab fa-whatsapp"></i>
                                 </div>
                                 <div>
-                                    <h5 class="fw-bold mb-1">Phone</h5>
-                                    <a href="tel:+921234567890" class="text-dark text-decoration-none">+92 123
-                                        4567890</a>
+                                    <h5 class="fw-bold mb-1">Chat on WhatsApp</h5>
+                                    <a href="https://wa.me/923293751706" target="_blank"
+                                        class="text-decoration-none text-dark">
+                                        +92 329 3751706
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -997,9 +1164,10 @@ A dynamic blogging platform with post creation, user authentication, comment sys
                                 </div>
                                 <div>
                                     <h5 class="fw-bold mb-1">Location</h5>
-                                    <p class="mb-0 text-dark"><a href="https://maps.app.goo.gl/x8e8aULAnFh7kz9A6" class="text-decoration-none text-dark">Lodhran,
-                                        Punjab, Pakistan</a></p>
-                                    
+                                    <a href="https://maps.app.goo.gl/x8e8aULAnFh7kz9A6" target="_blank"
+                                        class="text-decoration-none text-dark">
+                                        Lodhran, Punjab, Pakistan
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -1021,18 +1189,25 @@ A dynamic blogging platform with post creation, user authentication, comment sys
                         <div class="col-12">
                             <div class="text-center mt-4">
                                 <h5 class="fw-bold mb-3">Follow Me</h5>
-                                <a href="https://facebook.com/yourusername" target="_blank"
-                                    class="mx-2 text-dark fs-4"><i class="fab fa-facebook-f"></i></a>
-                                <a href="https://twitter.com/yourusername" target="_blank"
-                                    class="mx-2 text-dark fs-4"><i class="fab fa-twitter"></i></a>
-                                <a href="https://instagram.com/yourusername" target="_blank"
-                                    class="mx-2 text-dark fs-4"><i class="fab fa-instagram"></i></a>
+                                <a href="https://www.facebook.com/share/1BwEuhpxMv/" target="_blank"
+                                    class="mx-2 text-dark fs-4">
+                                    <i class="fab fa-facebook-f"></i>
+                                </a>
+                                <a href="https://www.instagram.com/aryansaeed906?igsh=YzljYTk1ODg3Zg==" target="_blank"
+                                    class="mx-2 text-dark fs-4">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
                                 <a href="https://linkedin.com/in/yourusername" target="_blank"
-                                    class="mx-2 text-dark fs-4"><i class="fab fa-linkedin-in"></i></a>
-                                <a href="https://github.com/yourusername" target="_blank" class="mx-2 text-dark fs-4"><i
-                                        class="fab fa-github"></i></a>
-                                <a href="https://youtube.com/@yourusername" target="_blank"
-                                    class="mx-2 text-dark fs-4"><i class="fab fa-youtube"></i></a>
+                                    class="mx-2 text-dark fs-4">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                                <a href="https://github.com/aryansaeed09" target="_blank" class="mx-2 text-dark fs-4">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                                <a href="https://youtube.com/@aryansaeed09?si=K2j55v_JipdM9Gfp" target="_blank"
+                                    class="mx-2 text-dark fs-4">
+                                    <i class="fab fa-youtube"></i>
+                                </a>
                             </div>
                         </div>
 
@@ -1043,12 +1218,12 @@ A dynamic blogging platform with post creation, user authentication, comment sys
     </section>
 
 
+
     <!-- Footer -->
     <footer class="text-center">
         <div class="container">
-         
-        
-            <p class="mb-2">© 2024 Aryan Saeed. All rights reserved.</p>
+
+            <p class="mb-2">© 2025 Aryan Saeed. All rights reserved.</p>
             <p class="mb-0">Designed & Developed with <i class="fas fa-heart text-danger"></i> by Aryan Saeed</p>
         </div>
     </footer>
